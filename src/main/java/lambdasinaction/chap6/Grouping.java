@@ -22,6 +22,9 @@ public class Grouping {
         System.out.println("Most caloric dishes by type: " + mostCaloricDishesByTypeWithoutOprionals());
         System.out.println("Sum calories by type: " + sumCaloriesByType());
         System.out.println("Caloric levels by type: " + caloricLevelsByType());
+
+        System.out.println(Arrays.stream(new int[]{1,2,3}).boxed().collect(summingInt(ele -> ele)));
+
     }
 
     private static Map<Dish.Type, List<Dish>> groupDishesByType() {
@@ -33,12 +36,14 @@ public class Grouping {
     }
 
     private static Map<Dish.Type, Set<String>> groupDishTagsByType() {
-        return menu.stream().collect(groupingBy(Dish::getType, flatMapping(dish -> dishTags.get( dish.getName() ).stream(), toSet())));
+//        return menu.stream().collect(groupingBy(Dish::getType, flatMapping(dish -> dishTags.get( dish.getName() ).stream(), toSet())));
+        return null;
     }
 
     private static Map<Dish.Type, List<Dish>> groupCaloricDishesByType() {
 //        return menu.stream().filter(dish -> dish.getCalories() > 500).collect(groupingBy(Dish::getType));
-        return menu.stream().collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
+//        return menu.stream().collect(groupingBy(Dish::getType, filtering(dish -> dish.getCalories() > 500, toList())));
+        return null;
     }
 
     private static Map<CaloricLevel, List<Dish>> groupDishesByCaloricLevel() {
